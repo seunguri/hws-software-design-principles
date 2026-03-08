@@ -2,6 +2,7 @@ package service;
 
 import log.Logger;
 import messaging.MessageSender;
+import messaging.SendResult;
 import repository.UserRepository;
 
 // 4. 이제 Service는 '비즈니스 흐름'만 관리합니다.
@@ -19,7 +20,11 @@ public class UserManagementService {
         if (!email.contains("@")) return;
 
         repository.save(email);
-        messageSender.send(email);
+        SendResult result = messageSender.send(email);
+        if (!result.isSuccess()) {
+            System.out.println("에러 발생: " + result.getErrorMessage());
+            // 여기서 로그를 남기거나 재시도 로직을 태움
+        }
         logger.log("User registered: " + email);
     }
 }
