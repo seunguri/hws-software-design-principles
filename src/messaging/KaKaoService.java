@@ -1,5 +1,8 @@
 package messaging;
 
+import di.MyDependency;
+
+@MyDependency
 public class KaKaoService implements MessageSender {
     public SendResult send(String message) { /* 카톡 발송*/
         // 카카오는 메일과 달리 글자수 제한이 있다고 가정

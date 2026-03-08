@@ -1,15 +1,9 @@
-import messaging.*;
+import di.MyContainer;
 import service.UserManagementService;
 
 public class Main {
-    public static void main(String[] args) {
-        UserManagementService userManagementService = new UserManagementService(
-                new CompositeSender(
-                        new FilteringSender(new EmailService()),
-                        new FilteringSender(new SlackService()),
-                        new FilteringSender(new KaKaoService())
-                )
-        );
+    public static void main(String[] args) throws Exception {
+        UserManagementService userManagementService = MyContainer.getBean(UserManagementService.class);
         userManagementService.registerUser("hanwha@hanwha.com", "hanwha123");
     }
 }
