@@ -1,5 +1,8 @@
+import service.UserManagementService;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        UserManagementService userManagementService = new UserManagementService();
+        userManagementService.registerUser("hanwha@hanwha.com", "hanwha123");
     }
 }
