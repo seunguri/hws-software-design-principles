@@ -19,7 +19,7 @@ public class MyScanner {
         if (resource == null) return classes;
 
         // 3. 실제 물리적 폴더 경로 확보
-        File directory = new File(resource.getFile());
+        File directory = new File(resource.toURI());
 
         if (directory.exists()) {
             // 4. 폴더 내의 모든 파일 검사
